@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program Studi S1 Rekayasa Perangkat Lunak – Telkom University</title>
+<meta name="google-site-verification" content="SrTZawFSaLAONuV52vjH13dAEw3zOeO0J7W9G7wwpi8" />
+  <link rel="icon" type="image/png" href="https://bse.telkomuniversity.ac.id/wp-content/uploads/2020/03/cropped-lambang-telkom-university-png.png">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --red: #c0392b;
+  --red2: #e74c3c;
+  --dark: #2c2c2c;
+  --gray-bg: #f4f4f4;
+  --text: #444;
+  --light: #777;
+  --white: #fff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Open Sans', sans-serif; color: var(--text); font-size:14px; overflow-x:hidden; }
+a { text-decoration:none; }
+img { max-width:100%; }
+ul { list-style:none; }
+
+/* ── TOP BAR ── */
+.topbar { background:#1a1a1a; color:#ccc; font-size:12px; padding:7px 0; border-bottom:2px solid var(--red); }
+.topbar-wrap { max-width:1200px; margin:0 auto; padding:0 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+.topbar-left { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+.topbar-left span, .topbar-left a { display:flex; align-items:center; gap:6px; color:#ccc; font-size:12px; }
+.topbar-left a:hover { color:#fff; }
+.topbar-left i { color:var(--red); font-size:11px; }
+.topbar-right { display:flex; align-items:center; gap:8px; }
+.topbar-right a { width:28px; height:28px; background:rgba(255,255,255,0.08); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#bbb; font-size:12px; transition:.2s; }
+.topbar-right a:hover { background:var(--red); color:#fff; }
+
+/* ── HEADER ── */
+header { background:#5f1d1d; box-shadow:0 2px 8px rgba(0,0,0,0.12); position:sticky; top:0; z-index:999; }
+.header-wrap { max-width:1200px; margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between; height:80px; }
+.site-logo { display:flex; align-items:center; gap:12px; text-decoration:none; flex-shrink:0; }
+.site-logo img { height:60px; width:auto; object-fit:contain; display:block; }
+.site-logo-text .name { font-family:'Raleway',sans-serif; font-weight:800; font-size:14.5px; color:#c0392b; text-transform:uppercase; letter-spacing:0.5px; display:block; }
+.site-logo-text .sub { font-size:11px; color:#888; font-weight:600; display:block; }
+
+/* nav */
+.main-nav { display:flex; align-items:center; }
+.main-nav > ul { display:flex; align-items:center; }
+.main-nav > ul > li { position:relative; }
+.main-nav > ul > li > a { display:flex; align-items:center; gap:4px; height:80px; padding:0 13px; font-size:12.5px; font-weight:700; color:var(--dark); text-transform:uppercase; letter-spacing:0.3px; transition:.2s; white-space:nowrap; border-bottom:3px solid transparent; }
+.main-nav > ul > li > a:hover, .main-nav > ul > li.active > a { color:var(--red); border-bottom-color:var(--red); }
+.main-nav > ul > li > a .arr { font-size:9px; }
+.drop-menu { display:none; position:absolute; top:100%; left:0; background:#fff; min-width:210px; box-shadow:0 6px 22px rgba(0,0,0,0.13); border-top:3px solid var(--red); z-index:1000; }
+.main-nav > ul > li:hover .drop-menu { display:block; }
+.drop-menu li a { display:block; padding:11px 18px; font-size:12.5px; color:var(--dark); border-bottom:1px solid #f0f0f0; transition:.2s; font-weight:500; }
+.drop-menu li:last-child a { border-bottom:none; }
+.drop-menu li a:hover { background:#fef0f0; color:var(--red); padding-left:24px; }
+.nav-daftar { margin-left:8px; background:var(--red) !important; color:#fff !important; padding:9px 18px !important; height:auto !important; border-radius:4px; font-weight:700 !important; font-size:12px !important; transition:background .2s !important; border-bottom:none !important; }
+.nav-daftar:hover { background:#a93226 !important; color:#fff !important; }
+.hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; }
+.hamburger span { display:block; width:24px; height:2.5px; background:var(--dark); border-radius:2px; }
+.mob-nav { display:none; position:fixed; top:80px; left:0; right:0; bottom:0; background:rgba(0,0,0,0.95); z-index:998; overflow-y:auto; padding:16px 0; }
+.mob-nav.open { display:block; }
+.mob-nav ul li a { display:block; padding:13px 24px; color:#ddd; font-size:14px; font-weight:600; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,0.07); }
+.mob-nav ul li a:hover { color:#fff; background:rgba(192,57,43,0.2); }
+
+/* ── HERO SLIDER ── */
+.hero-slider { position:relative; overflow:hidden; height:520px; background:#0d1117; }
+.slide { position:absolute; inset:0; display:flex; align-items:center; opacity:0; transition:opacity 1s ease; pointer-events:none; }
+.slide.active { opacity:1; pointer-events:auto; }
+.sl1 { background:linear-gradient(120deg,#1a0a0a 0%,#2d0a0a 45%,#0d1117 100%); }
+.sl2 { background:linear-gradient(135deg,#0d1117 0%,#1a2332 55%,#0a1628 100%); }
+.sl3 { background:linear-gradient(135deg,#0a1a0a 0%,#0d1f2d 55%,#1a0d2e 100%); }
+.slide-wrap { max-width:1200px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; width:100%; position:relative; z-index:2; }
+.slide-text { color:#fff; }
+.s-tag { display:inline-block; background:rgba(192,57,43,0.22); border:1px solid rgba(192,57,43,0.45); color:#ff8a80; padding:5px 14px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; }
+.sl2 .s-tag { background:rgba(52,152,219,0.22); border-color:rgba(52,152,219,0.45); color:#82cfff; }
+.sl3 .s-tag { background:rgba(46,204,113,0.22); border-color:rgba(46,204,113,0.45); color:#80ffb0; }
+.s-over { font-size:12.5px; color:rgba(255,255,255,0.55); margin-bottom:7px; letter-spacing:1px; text-transform:uppercase; }
+.s-title { font-family:'Raleway',sans-serif; font-weight:900; font-size:44px; line-height:1.1; margin-bottom:18px; }
+.s-title em { font-style:normal; color:var(--red2); }
+.sl2 .s-title em { color:#5dade2; }
+.sl3 .s-title em { color:#58d68d; }
+.s-desc { font-size:14px; line-height:1.8; color:rgba(255,255,255,0.72); margin-bottom:28px; max-width:480px; }
+.s-btns { display:flex; gap:14px; flex-wrap:wrap; }
+.btn-sp { background:var(--red); color:#fff; padding:12px 26px; border-radius:4px; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; transition:.3s; display:inline-flex; align-items:center; gap:7px; box-shadow:0 4px 15px rgba(192,57,43,0.38); }
+.btn-sp:hover { background:#a93226; transform:translateY(-2px); box-shadow:0 6px 20px rgba(192,57,43,0.5); }
+.btn-so { background:transparent; color:#fff; padding:12px 26px; border:2px solid rgba(255,255,255,0.32); border-radius:4px; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; transition:.3s; display:inline-flex; align-items:center; gap:7px; }
+.btn-so:hover { border-color:#fff; background:rgba(255,255,255,0.08); }
+
+/* Slide Visual */
+.slide-vis { display:flex; justify-content:center; align-items:center; }
+.vis-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:28px; display:flex; flex-direction:column; align-items:center; gap:18px; backdrop-filter:blur(8px); width:310px; }
+.vis-card img { width:170px; height:170px; object-fit:contain; }
+.vis-stats { display:flex; gap:12px; width:100%; }
+.vis-stat { flex:1; background:rgba(192,57,43,0.15); border:1px solid rgba(192,57,43,0.28); border-radius:10px; padding:12px 8px; text-align:center; color:#fff; }
+.vis-stat .vn { font-family:'Raleway',sans-serif; font-size:22px; font-weight:800; color:var(--red2); }
+.vis-stat .vl { font-size:10px; opacity:.8; margin-top:2px; }
+/* code box */
+.code-box { background:#0d1117; border:1px solid rgba(255,255,255,0.1); border-radius:12px; overflow:hidden; width:310px; font-family:monospace; font-size:12px; }
+.code-tb { background:#161b22; padding:8px 14px; display:flex; align-items:center; gap:6px; }
+.dot{width:10px;height:10px;border-radius:50%;} .dr{background:#ff5f57;} .dy{background:#febc2e;} .dg{background:#28c840;}
+.code-bd { padding:14px; line-height:1.8; color:#d4d4d4; }
+.ck{color:#569cd6;} .cf{color:#dcdcaa;} .cs{color:#ce9178;} .cv{color:#9cdcfe;} .cc{color:#6a9955;} .cn{color:#b5cea8;}
+/* badges grid */
+.badges-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; width:310px; }
+.badge-item { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:14px; text-align:center; color:#fff; }
+.badge-item i { font-size:26px; margin-bottom:7px; display:block; }
+.badge-item span { font-size:11px; opacity:.8; font-weight:600; }
+
+/* Slider controls */
+.sl-dots { position:absolute; bottom:22px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:10; }
+.sl-dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.28); cursor:pointer; transition:.3s; border:none; }
+.sl-dot.active { background:#fff; transform:scale(1.3); }
+.sl-arrows { position:absolute; top:50%; transform:translateY(-50%); width:100%; display:flex; justify-content:space-between; padding:0 14px; z-index:10; }
+.sl-arrow { width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); color:#fff; font-size:15px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.2s; }
+.sl-arrow:hover { background:var(--red); }
+
+/* ── STATS BAR ── */
+.stats-bar { background:var(--red); }
+.stats-wrap { max-width:1200px; margin:0 auto; padding:0 20px; display:grid; grid-template-columns:repeat(4,1fr); }
+.st-box { padding:28px 16px; text-align:center; color:#fff; border-right:1px solid rgba(255,255,255,0.2); }
+.st-box:last-child { border-right:none; }
+.st-num { font-family:'Raleway',sans-serif; font-size:38px; font-weight:900; line-height:1; }
+.st-num sup { font-size:20px; }
+.st-title { font-size:12.5px; font-weight:700; margin:6px 0 4px; text-transform:uppercase; letter-spacing:0.4px; }
+.st-sub { font-size:11.5px; opacity:.82; line-height:1.4; }
+
+/* ── SECTIONS ── */
+section { padding:70px 20px; }
+.s-inner { max-width:1200px; margin:0 auto; }
+.s-head { margin-bottom:36px; }
+.s-head.center { text-align:center; }
+.s-head.center .s-desc { margin:0 auto; }
+.overtitle { font-size:11.5px; font-weight:700; color:var(--red); text-transform:uppercase; letter-spacing:2.5px; display:block; margin-bottom:8px; }
+.overtitle::before { content:''; display:inline-block; width:28px; height:2px; background:var(--red); vertical-align:middle; margin-right:8px; }
+.s-title { font-family:'Raleway',sans-serif; font-weight:800; font-size:30px; color:var(--dark); line-height:1.25; margin-bottom:12px; }
+.s-title span { color:var(--red); }
+.s-divider { width:46px; height:4px; background:var(--red); border-radius:2px; margin:12px 0; }
+.s-head.center .s-divider { margin:12px auto; }
+.s-desc { font-size:14px; color:var(--light); line-height:1.8; max-width:580px; }
+
+/* ── ABOUT ── */
+.about-sec { background:#fff; }
+.about-grid { display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center; }
+.about-text .s-desc { max-width:100%; }
+.about-text p { font-size:14px; color:var(--light); line-height:1.9; margin-bottom:14px; }
+.btn-more { display:inline-flex; align-items:center; gap:8px; margin-top:10px; background:var(--red); color:#fff; padding:11px 24px; border-radius:4px; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; transition:.3s; }
+.btn-more:hover { background:#a93226; transform:translateY(-2px); }
+.about-img-wrap { position:relative; }
+.about-img-main { width:100%; border-radius:12px; overflow:hidden; background:linear-gradient(135deg,#1a0a0a 0%,#2d1010 50%,#0d0d1a 100%); display:flex; align-items:center; justify-content:center; min-height:320px; position:relative; }
+.about-img-main img { width:210px; object-fit:contain; filter:drop-shadow(0 10px 40px rgba(192,57,43,0.4)); }
+.fl-card { position:absolute; background:#fff; border-radius:10px; padding:13px 17px; box-shadow:0 8px 24px rgba(0,0,0,0.15); display:flex; align-items:center; gap:12px; }
+.fl-card.c1 { bottom:-16px; left:-16px; }
+.fl-card.c2 { top:-16px; right:-16px; }
+.fl-icon { width:42px; height:42px; border-radius:10px; background:rgba(192,57,43,0.1); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.fl-icon i { color:var(--red); font-size:19px; }
+.fl-num { font-family:'Raleway',sans-serif; font-size:22px; font-weight:800; color:var(--dark); line-height:1; }
+.fl-lbl { font-size:11px; color:var(--light); font-weight:600; }
+
+/* ── VISI MISI ── */
+.visimisi-sec { background:var(--gray-bg); }
+.vm-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:8px; }
+.vm-card { background:#fff; border-radius:10px; padding:32px 28px; box-shadow:0 2px 14px rgba(0,0,0,0.07); border-top:4px solid var(--red); transition:transform .3s,box-shadow .3s; }
+.vm-card.misi { border-top-color:#2980b9; }
+.vm-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(0,0,0,0.1); }
+.vm-icon { width:56px; height:56px; border-radius:12px; background:rgba(192,57,43,0.08); display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+.vm-card.misi .vm-icon { background:rgba(41,128,185,0.08); }
+.vm-icon i { font-size:24px; color:var(--red); }
+.vm-card.misi .vm-icon i { color:#2980b9; }
+.vm-card h3 { font-family:'Raleway',sans-serif; font-size:22px; font-weight:800; margin-bottom:14px; color:var(--dark); }
+.vm-card p { font-size:13.5px; color:var(--light); line-height:1.85; }
+.vm-card ul { display:flex; flex-direction:column; gap:10px; }
+.vm-card ul li { font-size:13.5px; color:var(--light); line-height:1.7; padding-left:22px; position:relative; }
+.vm-card ul li::before { content:'▸'; position:absolute; left:0; color:var(--red); font-size:13px; top:0; }
+.vm-card.misi ul li::before { color:#2980b9; }
+
+/* ── KEUNGGULAN ── */
+.keunggulan-sec { background:#fff; }
+.feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.feat-card { background:var(--gray-bg); border-radius:10px; padding:28px 24px; border:1px solid transparent; transition:all .3s; display:flex; flex-direction:column; }
+.feat-card:hover { border-color:var(--red); background:#fff; transform:translateY(-5px); box-shadow:0 12px 30px rgba(0,0,0,0.09); }
+.feat-icon { width:56px; height:56px; border-radius:12px; background:rgba(192,57,43,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+.feat-icon i { font-size:24px; color:var(--red); }
+.feat-card h4 { font-family:'Raleway',sans-serif; font-size:15.5px; font-weight:800; color:var(--dark); margin-bottom:10px; }
+.feat-card p { font-size:13px; color:var(--light); line-height:1.75; flex:1; }
+.feat-tag { margin-top:14px; font-size:11.5px; font-weight:700; color:var(--red); text-transform:uppercase; letter-spacing:1px; }
+
+/* ── VIDEO SECTION ── */
+.video-sec { background:#1a1a1a; padding:70px 20px; }
+.video-sec .s-title { color:#fff; }
+.video-sec .s-desc { color:rgba(255,255,255,0.6); }
+.video-sec .overtitle { color:#ff8a80; }
+.video-sec .overtitle::before { background:#ff8a80; }
+.video-sec .s-divider { background:var(--red2); }
+.video-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; margin-top:8px; }
+.video-wrap { border-radius:12px; overflow:hidden; aspect-ratio:16/9; position:relative; cursor:pointer; box-shadow:0 10px 40px rgba(0,0,0,0.5); }
+.video-thumb { width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:absolute; inset:0; background:linear-gradient(135deg,#2d0a0a,#0d1117); }
+.video-thumb img { position:absolute; width:140px; opacity:.2; object-fit:contain; }
+.play-btn { width:68px; height:68px; border-radius:50%; background:rgba(192,57,43,.9); display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 12px rgba(192,57,43,.18); transition:.3s; position:relative; z-index:2; }
+.play-btn:hover { transform:scale(1.1); box-shadow:0 0 0 18px rgba(192,57,43,.12); }
+.play-btn i { color:#fff; font-size:26px; margin-left:4px; }
+.video-text { color:#fff; }
+.video-text h3 { font-family:'Raleway',sans-serif; font-size:25px; font-weight:800; margin-bottom:12px; }
+.video-text p { font-size:13.5px; color:rgba(255,255,255,.65); line-height:1.8; margin-bottom:14px; }
+.v-list { display:flex; flex-direction:column; gap:9px; }
+.v-list li { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:rgba(255,255,255,.72); line-height:1.6; }
+.v-list li i { color:var(--red2); margin-top:3px; flex-shrink:0; }
+
+/* ── PARTNERS ── */
+.partner-sec { background:var(--gray-bg); padding:46px 20px; }
+.partner-label { text-align:center; font-size:11.5px; color:#aaa; text-transform:uppercase; letter-spacing:3px; font-weight:700; margin-bottom:26px; }
+.partner-scroll { overflow:hidden; }
+.partner-track { display:flex; gap:16px; align-items:center; animation:scroll-p 22s linear infinite; width:max-content; }
+.partner-track:hover { animation-play-state:paused; }
+@keyframes scroll-p { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.partner-logo { background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:11px 22px; font-weight:700; font-size:13px; color:#555; display:flex; align-items:center; gap:8px; white-space:nowrap; transition:.2s; flex-shrink:0; justify-content:center; min-width:136px; }
+.partner-logo i { font-size:16px; color:var(--red); }
+.partner-logo:hover { border-color:var(--red); color:var(--red); }
+
+/* ── AKREDITASI ── */
+.akred-sec { background:#fff; padding:60px 20px; }
+.akred-row { display:flex; justify-content:center; gap:36px; flex-wrap:wrap; margin-top:34px; }
+.akred-item { text-align:center; }
+.akred-circle { width:108px; height:108px; border-radius:50%; border:5px solid var(--red); background:#fff0f0; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; box-shadow:0 4px 20px rgba(192,57,43,0.15); }
+.akred-circle .big { font-family:'Raleway',sans-serif; font-size:38px; font-weight:900; color:var(--red); }
+.akred-item p { font-size:13px; font-weight:700; color:var(--dark); margin-bottom:2px; }
+.akred-item small { font-size:11.5px; color:var(--light); }
+
+/* ── NEWS ── */
+.news-sec { background:var(--gray-bg); }
+.news-hdr { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:26px; }
+.btn-all { background:var(--red); color:#fff; padding:9px 18px; border-radius:4px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; transition:.2s; }
+.btn-all:hover { background:#a93226; }
+.news-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.news-card { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.07); transition:all .3s; display:flex; flex-direction:column; }
+.news-card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.11); }
+.n-thumb { height:188px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.nb1{background:linear-gradient(135deg,#c0392b,#8e1a0e);}
+.nb2{background:linear-gradient(135deg,#1a5276,#154360);}
+.nb3{background:linear-gradient(135deg,#117a65,#0a5544);}
+.nb4{background:linear-gradient(135deg,#6c3483,#4a235a);}
+.nb5{background:linear-gradient(135deg,#784212,#5d3409);}
+.nb6{background:linear-gradient(135deg,#1a252f,#212f3c);}
+.n-thumb i { font-size:50px; color:rgba(255,255,255,0.17); }
+.n-cat { position:absolute; top:12px; left:12px; background:var(--red); color:#fff; padding:4px 10px; border-radius:3px; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; }
+.n-date { position:absolute; bottom:0; right:0; background:rgba(0,0,0,.62); color:#fff; padding:5px 12px; font-size:11px; font-weight:600; display:flex; align-items:center; gap:5px; }
+.n-body { padding:18px; flex:1; display:flex; flex-direction:column; }
+.n-meta { display:flex; align-items:center; gap:12px; margin-bottom:9px; font-size:11.5px; color:#aaa; }
+.n-meta span { display:flex; align-items:center; gap:4px; }
+.n-body h4 { font-size:14px; font-weight:700; color:var(--dark); line-height:1.5; margin-bottom:9px; }
+.n-body p { font-size:12.5px; color:var(--light); line-height:1.7; flex:1; }
+.n-read { display:inline-flex; align-items:center; gap:5px; margin-top:13px; font-size:12.5px; font-weight:700; color:var(--red); }
+.n-read:hover { text-decoration:underline; }
+
+/* ── CTA ── */
+.cta-band { background:linear-gradient(120deg,var(--red) 0%,#8e1a0e 100%); padding:68px 20px; text-align:center; color:#fff; position:relative; overflow:hidden; }
+.cta-band::before,.cta-band::after { content:''; position:absolute; border-radius:50%; }
+.cta-band::before { top:-60%; left:-5%; width:400px; height:400px; background:rgba(255,255,255,0.04); }
+.cta-band::after { bottom:-60%; right:-5%; width:400px; height:400px; background:rgba(0,0,0,0.07); }
+.cta-inner { position:relative; z-index:1; }
+.cta-band h2 { font-family:'Raleway',sans-serif; font-size:32px; font-weight:900; margin-bottom:12px; }
+.cta-band p { font-size:15px; opacity:.88; max-width:500px; margin:0 auto 26px; line-height:1.7; }
+.btn-cta { background:#fff; color:var(--red); padding:13px 36px; border-radius:4px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:.6px; display:inline-flex; align-items:center; gap:8px; transition:.3s; box-shadow:0 4px 18px rgba(0,0,0,0.2); }
+.btn-cta:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,0.25); }
+
+/* ── FOOTER ── */
+footer { background:#1a1a1a; color:rgba(255,255,255,0.72); }
+.footer-top { padding:52px 20px 28px; }
+.footer-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2.2fr 1fr 1fr 1.5fr; gap:38px; }
+.f-logo-wrap { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.f-logo-wrap img { height:52px; object-fit:contain; filter:brightness(1.1) drop-shadow(0 0 6px rgba(255,255,255,0.08)); }
+.f-name { font-family:'Raleway',sans-serif; font-weight:800; font-size:13.5px; color:#ff8a80; line-height:1.35; }
+.f-sub { font-size:11px; color:rgba(255,255,255,0.42); font-weight:600; }
+.f-about p { font-size:12.5px; line-height:1.85; color:rgba(255,255,255,0.52); margin-bottom:18px; }
+.f-socials { display:flex; gap:8px; flex-wrap:wrap; }
+.f-soc { width:33px; height:33px; border-radius:50%; background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.58); display:flex; align-items:center; justify-content:center; font-size:13px; transition:.2s; }
+.f-soc:hover { background:var(--red); color:#fff; }
+.f-col h5 { font-family:'Raleway',sans-serif; font-size:13.5px; font-weight:800; color:#fff; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.09); text-transform:uppercase; letter-spacing:.4px; }
+.f-col ul li { margin-bottom:8px; }
+.f-col ul li a { font-size:12.5px; color:rgba(255,255,255,0.52); transition:.2s; display:flex; align-items:center; gap:7px; }
+.f-col ul li a i { font-size:10px; color:var(--red); }
+.f-col ul li a:hover { color:#fff; padding-left:4px; }
+.f-contact { display:flex; flex-direction:column; gap:12px; }
+.f-ci { display:flex; gap:12px; align-items:flex-start; }
+.f-ci i { color:var(--red); font-size:12.5px; margin-top:2px; flex-shrink:0; width:15px; text-align:center; }
+.f-ci span { font-size:12.5px; color:rgba(255,255,255,0.52); line-height:1.6; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.07); padding:15px 20px; }
+.footer-bottom-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:rgba(255,255,255,0.33); flex-wrap:wrap; gap:8px; }
+.footer-bottom-inner a { color:rgba(255,255,255,0.38); margin-left:14px; }
+.footer-bottom-inner a:hover { color:#fff; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .slide-wrap,.about-grid,.vm-grid,.video-grid { grid-template-columns:1fr; }
+  .feat-grid { grid-template-columns:repeat(2,1fr); }
+  .news-grid { grid-template-columns:repeat(2,1fr); }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .stats-wrap { grid-template-columns:repeat(2,1fr); }
+  .st-box { border-right:none; border-bottom:1px solid rgba(255,255,255,0.18); }
+  .st-box:nth-child(odd) { border-right:1px solid rgba(255,255,255,0.18); }
+  .slide-vis { display:none; }
+  .s-title { font-size:26px; }
+}
+@media(max-width:768px){
+  .main-nav { display:none; }
+  .hamburger { display:flex; }
+  .topbar-left { display:none; }
+  .hero-slider { height:auto; min-height:380px; }
+  .feat-grid { grid-template-columns:1fr; }
+  .news-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; }
+  .news-hdr { flex-direction:column; gap:12px; align-items:flex-start; }
+}
+@media(max-width:480px){
+  .stats-wrap { grid-template-columns:1fr; }
+  .st-box { border-right:none; border-bottom:1px solid rgba(255,255,255,0.18); }
+  .st-box:nth-child(odd) { border-right:none; }
+  .akred-row { gap:18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOP BAR ══ -->
+<div class="topbar">
+  <div class="topbar-wrap">
+    <div class="topbar-left">
+      <span><i class="fas fa-map-marker-alt"></i> Jl. Telekomunikasi No.1, Terusan Buahbatu, Bandung 40257</span>
+      <a href="tel:+62227566456"><i class="fas fa-phone"></i> (022) 7566 456</a>
+      <a href="mailto:rpl@telkomuniversity.ac.id"><i class="fas fa-envelope"></i> rpl@telkomuniversity.ac.id</a>
+    </div>
+    <div class="topbar-right">
+      <a href="https://www.instagram.com/s1rpltelu/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@S1RPLTelu" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header id="main-header">
+  <div class="header-wrap">
+    <a href="#" class="site-logo">
+      <img src="https://bse.telkomuniversity.ac.id/wp-content/uploads/2021/04/s1_se-removebg-preview-e1628068450389.png"
+           alt="Logo S1 Software Engineering Telkom University"
+           onerror="this.style.display='none'">
+    </a>
+
+    <nav class="main-nav">
+      <ul>
+        <li class="active"><a href="#">Home</a></li>
+        <li>
+          <a href="#">Beranda <span class="arr">▾</span></a>
+          <ul class="drop-menu">
+            <li><a href="#">Video Profil Prodi</a></li>
+            <li><a href="#">Selamat Datang</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Profil <span class="arr">▾</span></a>
+          <ul class="drop-menu">
+            <li><a href="#">Visi &amp; Misi</a></li>
+            <li><a href="#">Tujuan &amp; Sasaran</a></li>
+            <li><a href="#">Akreditasi</a></li>
+            <li><a href="#">Struktur Organisasi</a></li>
+            <li><a href="#">Dosen</a></li>
+            <li><a href="#">Tenaga Kependidikan</a></li>
+            <li><a href="#">Fasilitas</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Akademik <span class="arr">▾</span></a>
+          <ul class="drop-menu">
+            <li><a href="#">Kurikulum</a></li>
+            <li><a href="#">Kalender Akademik</a></li>
+            <li><a href="#">Kerja Praktik</a></li>
+            <li><a href="#">Tugas Akhir</a></li>
+            <li><a href="#">MBKM</a></li>
+            <li><a href="#">Beasiswa</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Kemahasiswaan <span class="arr">▾</span></a>
+          <ul class="drop-menu">
+            <li><a href="#">HIMA RPL</a></li>
+            <li><a href="#">Prestasi Mahasiswa</a></li>
+            <li><a href="#">Alumni</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Riset <span class="arr">▾</span></a>
+          <ul class="drop-menu">
+            <li><a href="#">Penelitian</a></li>
+            <li><a href="#">Pengabdian Masyarakat</a></li>
+            <li><a href="#">Jurnal</a></li>
+            <li><a href="#">Publikasi</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="https://smb.telkomuniversity.ac.id/" target="_blank" class="nav-daftar">Pendaftaran</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" onclick="toggleMob()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mob-nav" id="mobNav">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Beranda</a></li>
+    <li><a href="#">Profil</a></li>
+    <li><a href="#">Akademik</a></li>
+    <li><a href="#">Kemahasiswaan</a></li>
+    <li><a href="#">Riset</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="https://smb.telkomuniversity.ac.id/" target="_blank" style="color:#ff8a80;font-weight:800">Pendaftaran →</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO SLIDER ══ -->
+<div class="hero-slider" id="heroSlider">
+
+  <!-- Slide 1 -->
+  <div class="slide sl1 active">
+    <div class="slide-wrap">
+      <div class="slide-text">
+        <div class="s-tag">Program Studi Unggulan Tel-U</div>
+        <div class="s-over">Selamat Datang di</div>
+        <h1 class="s-title">Program Studi S1<br><em>Rekayasa Perangkat</em><br>Lunak</h1>
+        <p class="s-desc">Selamat datang di dalam website prodi S1 Rekayasa Perangkat Lunak Telkom University. Website ini menjadi wadah untuk mencari segala informasi mengenai Program Studi S1 Rekayasa Perangkat Lunak.</p>
+        <div class="s-btns">
+          <a href="#" class="btn-sp"><i class="fas fa-info-circle"></i> Lihat Profil</a>
+          <a href="#" class="btn-so"><i class="fas fa-book-open"></i> Lihat Kurikulum</a>
+        </div>
+      </div>
+      <div class="slide-vis">
+        <div class="vis-card">
+          <img src="https://bse.telkomuniversity.ac.id/wp-content/uploads/2021/04/s1_se-removebg-preview-e1628068450389.png"
+               alt="Logo S1 RPL"
+               onerror="this.style.display='none'">
+          <div class="vis-stats">
+            <div class="vis-stat"><div class="vn">6000+</div><div class="vl">Alumni</div></div>
+            <div class="vis-stat"><div class="vn" style="font-size:14px;margin-top:4px">Unggul</div><div class="vl">Akreditasi</div></div>
+            <div class="vis-stat"><div class="vn">2009</div><div class="vl">Berdiri</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide sl2">
+    <div class="slide-wrap">
+      <div class="slide-text">
+        <div class="s-tag">Kurikulum Modern</div>
+        <div class="s-over">Berbasis Industri &amp; OBE</div>
+        <h1 class="s-title">Kurikulum<br><em>OBE &amp; MBKM</em><br>Terkini</h1>
+        <p class="s-desc">Kurikulum kami dirancang bersama industri teknologi terkemuka, memadukan teori akademik kuat dengan praktik nyata di era transformasi digital global.</p>
+        <div class="s-btns">
+          <a href="#" class="btn-sp"><i class="fas fa-graduation-cap"></i> Detail Kurikulum</a>
+          <a href="#" class="btn-so"><i class="fas fa-file-alt"></i> Unduh Brosur</a>
+        </div>
+      </div>
+      <div class="slide-vis">
+        <div class="code-box">
+          <div class="code-tb">
+            <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+            <span style="color:#888;font-size:11px;margin-left:8px">curriculum.js</span>
+          </div>
+          <div class="code-bd">
+            <div><span class="cc">// S1 RPL Telkom University</span></div>
+            <div><span class="ck">const</span> <span class="cv">prodi</span> = {</div>
+            <div>&nbsp;<span class="cv">nama</span>: <span class="cs">'S1 Rekayasa PL'</span>,</div>
+            <div>&nbsp;<span class="cv">sks</span>: <span class="cn">144</span>, <span class="cv">semester</span>: <span class="cn">8</span>,</div>
+            <div>&nbsp;<span class="cv">konsentrasi</span>: [</div>
+            <div>&nbsp;&nbsp;<span class="cs">'AI &amp; ML'</span>, <span class="cs">'DevOps'</span>,</div>
+            <div>&nbsp;&nbsp;<span class="cs">'Cyber Security'</span>,</div>
+            <div>&nbsp;&nbsp;<span class="cs">'VGA'</span>, <span class="cs">'Technopreneur'</span></div>
+            <div>&nbsp;]</div>
+            <div>};</div>
+            <div><span class="cf">buildFuture</span>(<span class="cv">prodi</span>);</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide sl3">
+    <div class="slide-wrap">
+      <div class="slide-text">
+        <div class="s-tag">Prestasi &amp; Riset 2024</div>
+        <div class="s-over">Pencapaian Terkini Kami</div>
+        <h1 class="s-title"><em>First Prize</em><br>International Writing<br>Competition 2024</h1>
+        <p class="s-desc">Mahasiswa S1 RPL Telkom University meraih juara pertama pada kompetisi penulisan artikel internasional Journal of Informatics and Web Engineering (JIWE) Multimedia University.</p>
+        <div class="s-btns">
+          <a href="#" class="btn-sp"><i class="fas fa-trophy"></i> Lihat Prestasi</a>
+          <a href="#" class="btn-so"><i class="fas fa-newspaper"></i> Baca Blog</a>
+        </div>
+      </div>
+      <div class="slide-vis">
+        <div class="badges-grid">
+          <div class="badge-item"><i class="fas fa-trophy" style="color:#f1c40f"></i><span>Juara 1<br>Internasional</span></div>
+          <div class="badge-item"><i class="fas fa-medal" style="color:#e67e22"></i><span>Juara 3<br>LIDM 2024</span></div>
+          <div class="badge-item"><i class="fas fa-star" style="color:#e74c3c"></i><span>Akreditasi<br>Unggul</span></div>
+          <div class="badge-item"><i class="fas fa-globe" style="color:#3498db"></i><span>Mitra<br>Global</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sl-arrows">
+    <button class="sl-arrow" onclick="cSlide(-1)" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="sl-arrow" onclick="cSlide(1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="sl-dots">
+    <button class="sl-dot active" onclick="gSlide(0)"></button>
+    <button class="sl-dot" onclick="gSlide(1)"></button>
+    <button class="sl-dot" onclick="gSlide(2)"></button>
+  </div>
+</div>
+
+<!-- ══ STATS BAR ══ -->
+<div class="stats-bar">
+  <div class="stats-wrap">
+    <div class="st-box">
+      <div class="st-num">6000<sup>+</sup></div>
+      <div class="st-title">Alumni</div>
+      <div class="st-sub">Tersebar di industri nasional &amp; internasional</div>
+    </div>
+    <div class="st-box">
+      <div class="st-num">Unggul</div>
+      <div class="st-title">Akreditasi BAN-PT</div>
+      <div class="st-sub">Peringkat tertinggi akreditasi nasional</div>
+    </div>
+    <div class="st-box">
+      <div class="st-num">90<sup>%</sup></div>
+      <div class="st-title">Penyerapan Kerja</div>
+      <div class="st-sub">Lulusan terserap industri dalam 6 bulan</div>
+    </div>
+    <div class="st-box">
+      <div class="st-num">2009</div>
+      <div class="st-title">Tahun Berdiri</div>
+      <div class="st-sub">Lebih dari 15 tahun pengalaman</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section class="about-sec">
+  <div class="s-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="overtitle">Tentang Kami</span>
+        <h2 class="s-title">Selamat Datang di<br><span>S1 Rekayasa Perangkat Lunak</span></h2>
+        <div class="s-divider"></div>
+        <p>Selamat datang di dalam website prodi <strong>S1 Rekayasa Perangkat Lunak Telkom University</strong>. Website ini menjadi wadah untuk mencari segala informasi mengenai Program Studi S1 Rekayasa Perangkat Lunak.</p>
+        <p>Program Studi Rekayasa Perangkat Lunak Telkom University dirancang untuk menghasilkan lulusan yang kompeten dalam bidang pengembangan perangkat lunak dengan standar industri global. Kami menggabungkan teori akademis yang kuat dengan praktik industri terkini.</p>
+        <p>Dengan dukungan dosen berpengalaman dan fasilitas laboratorium yang lengkap, mahasiswa akan dibekali dengan keterampilan teknis dan soft skills yang dibutuhkan untuk menghadapi tantangan dunia kerja di era digital.</p>
+        <a href="#" class="btn-more"><i class="fas fa-arrow-right"></i> Lihat Selengkapnya</a>
+      </div>
+      <div class="about-img-wrap">
+        <div class="about-img-main">
+          <img src="https://bse.telkomuniversity.ac.id/wp-content/uploads/2021/04/s1_se-removebg-preview-e1628068450389.png"
+               alt="S1 Software Engineering Telkom University"
+               onerror="this.style.opacity='0'">
+        </div>
+        <div class="fl-card c1">
+          <div class="fl-icon"><i class="fas fa-users"></i></div>
+          <div><div class="fl-num">6000+</div><div class="fl-lbl">Alumni Aktif</div></div>
+        </div>
+        <div class="fl-card c2">
+          <div class="fl-icon"><i class="fas fa-award"></i></div>
+          <div><div class="fl-num">Unggul</div><div class="fl-lbl">Akreditasi BAN-PT</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VISI MISI ══ -->
+<section class="visimisi-sec">
+  <div class="s-inner">
+    <div class="s-head center">
+      <span class="overtitle">Arah Strategis</span>
+      <h2 class="s-title">Visi &amp; Misi</h2>
+      <div class="s-divider"></div>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card">
+        <div class="vm-icon"><i class="fas fa-eye"></i></div>
+        <h3>Visi</h3>
+        <p>Menjadi Program Studi berbasis riset dan entrepreneur pada tahun 2028, yang berperan aktif dalam pengembangan ilmu Rekayasa Perangkat Lunak pada sistem berskala besar dan kompleks dengan menggunakan proses rekayasa perangkat lunak secara otomatis yang bermanfaat untuk masyarakat dan pembangunan nasional.</p>
+      </div>
+      <div class="vm-card misi">
+        <div class="vm-icon"><i class="fas fa-bullseye"></i></div>
+        <h3>Misi</h3>
+        <ul>
+          <li>Menyelenggarakan dan mengembangkan pendidikan dalam bidang Rekayasa Perangkat Lunak berbasis nilai HEI (Humanity, Entrepreneurship, Innovation).</li>
+          <li>Mengembangkan dan menyebarluaskan pengetahuan baru dan produk intelektual dalam bidang Rekayasa Perangkat Lunak untuk tujuan pembangunan berkelanjutan (sustainable development goals).</li>
+          <li>Memanfaatkan hasil inovasi dalam bidang Rekayasa Perangkat Lunak untuk mendukung kewirausahaan, kreativitas, pola pikir kritis, dan kerja sama.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEUNGGULAN ══ -->
+<section class="keunggulan-sec">
+  <div class="s-inner">
+    <div class="s-head center">
+      <span class="overtitle">Keunggulan Prodi</span>
+      <h2 class="s-title">Mengapa Memilih <span>S1 RPL Tel-U?</span></h2>
+      <div class="s-divider"></div>
+      <p class="s-desc">Kami mempersiapkan Anda menjadi software engineer berkelas dunia dengan kurikulum relevan dan fasilitas terkini.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon"><i class="fas fa-industry"></i></div>
+        <h4>Kurikulum Berbasis Industri</h4>
+        <p>Dirancang bersama lebih dari 50 mitra industri teknologi nasional dan internasional untuk memastikan relevansi kompetensi lulusan.</p>
+        <span class="feat-tag">OBE Curriculum</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="fas fa-project-diagram"></i></div>
+        <h4>Project-Based Learning</h4>
+        <p>Mahasiswa mengerjakan proyek nyata bersama mitra industri sejak semester pertama melalui program TA Capstone dan MBKM.</p>
+        <span class="feat-tag">PBL Method</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="fas fa-robot"></i></div>
+        <h4>AI &amp; Teknologi Terkini</h4>
+        <p>Track khusus Artificial Intelligence, Machine Learning, DevOps, Cyber Security, VGA (Virtual/Gamification/AR), dan Technopreneur.</p>
+        <span class="feat-tag">5 Konsentrasi</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="fas fa-flask"></i></div>
+        <h4>Lab &amp; Fasilitas Modern</h4>
+        <p>Laboratorium riset dan praktikum berteknologi tinggi untuk mendukung pengembangan perangkat lunak berkualitas global.</p>
+        <span class="feat-tag">Full Equipped</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="fas fa-globe-asia"></i></div>
+        <h4>Jaringan Internasional</h4>
+        <p>Kerjasama dengan universitas dan industri di lebih dari 20 negara membuka peluang exchange, magang, dan karier global.</p>
+        <span class="feat-tag">20+ Countries</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="fas fa-award"></i></div>
+        <h4>Akreditasi Unggul</h4>
+        <p>Terakreditasi Unggul oleh BAN-PT sebagai pengakuan tertinggi atas kualitas pendidikan dan lulusan program studi kami.</p>
+        <span class="feat-tag">BAN-PT Unggul</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIDEO PROFIL ══ -->
+<section class="video-sec">
+  <div class="s-inner">
+    <div class="video-grid">
+      <div class="video-wrap" onclick="window.open('https://bse.telkomuniversity.ac.id/beranda/video-profil-prodi/','_blank')">
+        <div class="video-thumb">
+          <img src="https://bse.telkomuniversity.ac.id/wp-content/uploads/2021/04/s1_se-removebg-preview-e1628068450389.png"
+               alt="Video Profil" onerror="this.style.display='none'">
+          <div class="play-btn"><i class="fas fa-play"></i></div>
+        </div>
+      </div>
+      <div class="video-text">
+        <span class="overtitle" style="color:#ff8a80">Video Profil</span>
+        <h3>Kenali Lebih Dalam<br>Prodi S1 RPL Tel-U</h3>
+        <div class="s-divider"></div>
+        <p>Saksikan video profil program studi kami dan temukan mengapa S1 Rekayasa Perangkat Lunak Telkom University menjadi pilihan tepat untuk karir software engineering kelas dunia.</p>
+        <ul class="v-list">
+          <li><i class="fas fa-check-circle"></i> Fasilitas laboratorium berteknologi tinggi</li>
+          <li><i class="fas fa-check-circle"></i> Dosen dari akademisi dan praktisi industri</li>
+          <li><i class="fas fa-check-circle"></i> Kurikulum adaptif sesuai kebutuhan industri 4.0</li>
+          <li><i class="fas fa-check-circle"></i> Program magang &amp; kerjasama 50+ perusahaan</li>
+          <li><i class="fas fa-check-circle"></i> Komunitas alumni yang kuat dan aktif</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MITRA INDUSTRI ══ -->
+<div class="partner-sec">
+  <div class="s-inner">
+    <p class="partner-label">Dipercaya oleh Mitra Industri Terkemuka</p>
+    <div class="partner-scroll">
+      <div class="partner-track">
+        <div class="partner-logo"><i class="fas fa-network-wired"></i> Telkom Indonesia</div>
+        <div class="partner-logo"><i class="fab fa-google"></i> Google</div>
+        <div class="partner-logo"><i class="fab fa-microsoft"></i> Microsoft</div>
+        <div class="partner-logo"><i class="fab fa-aws"></i> Amazon AWS</div>
+        <div class="partner-logo"><i class="fas fa-shopping-cart"></i> Tokopedia</div>
+        <div class="partner-logo"><i class="fas fa-motorcycle"></i> GoTo Group</div>
+        <div class="partner-logo"><i class="fas fa-building"></i> Bank Mandiri</div>
+        <div class="partner-logo"><i class="fas fa-code-branch"></i> Bukalapak</div>
+        <div class="partner-logo"><i class="fas fa-bolt"></i> PLN</div>
+        <div class="partner-logo"><i class="fas fa-satellite"></i> Indosat Ooredoo</div>
+        <!-- duplicate for seamless loop -->
+        <div class="partner-logo"><i class="fas fa-network-wired"></i> Telkom Indonesia</div>
+        <div class="partner-logo"><i class="fab fa-google"></i> Google</div>
+        <div class="partner-logo"><i class="fab fa-microsoft"></i> Microsoft</div>
+        <div class="partner-logo"><i class="fab fa-aws"></i> Amazon AWS</div>
+        <div class="partner-logo"><i class="fas fa-shopping-cart"></i> Tokopedia</div>
+        <div class="partner-logo"><i class="fas fa-motorcycle"></i> GoTo Group</div>
+        <div class="partner-logo"><i class="fas fa-building"></i> Bank Mandiri</div>
+        <div class="partner-logo"><i class="fas fa-code-branch"></i> Bukalapak</div>
+        <div class="partner-logo"><i class="fas fa-bolt"></i> PLN</div>
+        <div class="partner-logo"><i class="fas fa-satellite"></i> Indosat Ooredoo</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AKREDITASI ══ -->
+<section class="akred-sec">
+  <div class="s-inner">
+    <div class="s-head center">
+      <span class="overtitle">Pengakuan Resmi</span>
+      <h2 class="s-title">Akreditasi &amp; <span>Sertifikasi</span></h2>
+      <div class="s-divider"></div>
+    </div>
+    <div class="akred-row">
+      <div class="akred-item">
+        <div class="akred-circle"><span class="big">A</span></div>
+        <p>BAN-PT Unggul</p>
+        <small>Akreditasi Nasional</small>
+      </div>
+      <div class="akred-item">
+        <div class="akred-circle" style="border-color:#2980b9;background:#eaf4fc">
+          <span class="big" style="color:#2980b9;font-size:26px">ISO</span>
+        </div>
+        <p>ISO 9001:2015</p>
+        <small>Sistem Manajemen Mutu</small>
+      </div>
+      <div class="akred-item">
+        <div class="akred-circle" style="border-color:#f39c12;background:#fef9e7">
+          <span class="big" style="color:#f39c12;font-size:22px">QS</span>
+        </div>
+        <p>QS World Ranking</p>
+        <small>Top University</small>
+      </div>
+      <div class="akred-item">
+        <div class="akred-circle" style="border-color:#27ae60;background:#eafaf1">
+          <span class="big" style="color:#27ae60;font-size:18px">AUN</span>
+        </div>
+        <p>ASEAN Univ. Network</p>
+        <small>Quality Assurance</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWS / BLOG ══ -->
+<section class="news-sec">
+  <div class="s-inner">
+    <div class="news-hdr">
+      <div>
+        <span class="overtitle">Terkini</span>
+        <h2 class="s-title">Berita &amp; <span>Informasi</span></h2>
+        <div class="s-divider"></div>
+      </div>
+      <a href="#" class="btn-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="n-thumb nb1">
+          <i class="fas fa-trophy"></i>
+          <span class="n-cat">Prestasi</span>
+          <div class="n-date"><i class="far fa-calendar-alt"></i> 15 Feb 2026</div>
+        </div>
+        <div class="n-body">
+          <div class="n-meta"><span><i class="fas fa-user"></i> Admin RPL</span><span><i class="fas fa-folder"></i> Kompetisi</span></div>
+          <h4>First Prize in the 2nd International Article Writing Competition 2024 in Journal of Informatics and Web Engineering (JIWE) Multimedia University</h4>
+          <p>Mahasiswa S1 RPL Telkom University berhasil meraih juara pertama pada kompetisi internasional bergengsi di Malaysia...</p>
+          <a href="#" class="n-read">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="n-thumb nb4">
+          <i class="fas fa-medal"></i>
+          <span class="n-cat">Prestasi</span>
+          <div class="n-date"><i class="far fa-calendar-alt"></i> 10 Jan 2026</div>
+        </div>
+        <div class="n-body">
+          <div class="n-meta"><span><i class="fas fa-user"></i> Admin RPL</span><span><i class="fas fa-folder"></i> Kompetisi</span></div>
+          <h4>Juara 3 Divisi Inovasi Pembelajaran Digital Pendidikan LIDM 2024</h4>
+          <p>Tim mahasiswa S1 RPL berhasil meraih juara 3 dalam Lomba Inovasi Digital Mahasiswa (LIDM) tingkat nasional 2024...</p>
+          <a href="#" class="n-read">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="n-thumb nb2">
+          <i class="fas fa-file-alt"></i>
+          <span class="n-cat">Akademik</span>
+          <div class="n-date"><i class="far fa-calendar-alt"></i> 21 Mar 2024</div>
+        </div>
+        <div class="n-body">
+          <div class="n-meta"><span><i class="fas fa-user"></i> Admin RPL</span><span><i class="fas fa-folder"></i> Tugas Akhir</span></div>
+          <h4>Timeline Tugas Akhir Semester Genap 2023/2024 – Prodi S1 Rekayasa Perangkat Lunak</h4>
+          <p>Informasi lengkap timeline sidang dan yudisium TA beserta persyaratan krusial yang harus dipenuhi mahasiswa...</p>
+          <a href="https://bse.telkomuniversity.ac.id/timeline-tugas-akhir-semester-genap-2023-2024/" target="_blank" class="n-read">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="n-thumb nb3">
+          <i class="fas fa-laptop-code"></i>
+          <span class="n-cat">Workshop</span>
+          <div class="n-date"><i class="far fa-calendar-alt"></i> 5 Des 2024</div>
+        </div>
+        <div class="n-body">
+          <div class="n-meta"><span><i class="fas fa-user"></i> Admin RPL</span><span><i class="fas fa-folder"></i> Kegiatan</span></div>
+          <h4>Workshop DevOps &amp; Cloud Computing Bersama Praktisi Industri Telkom Indonesia</h4>
+          <p>Mahasiswa mendapat pembekalan dari engineer senior Telkom Indonesia tentang implementasi DevOps modern...</p>
+          <a href="#" class="n-read">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="n-thumb nb5">
+          <i class="fas fa-handshake"></i>
+          <span class="n-cat">Kerjasama</span>
+          <div class="n-date"><i class="far fa-calendar-alt"></i> 18 Nov 2024</div>
+        </div>
+        <div class="n-body">
+          <div class="n-meta"><span><i class="fas fa-user"></i> Admin RPL</span><span><i class="fas fa-folder"></i> Abdimas</span></div>
+          <h4>Penandatanganan MoU Kerjasama MBKM dengan 5 Perusahaan Teknologi Nasional</h4>
+          <p>Program Studi S1 RPL memperluas jaringan industri dengan penandatanganan perjanjian kerjasama MBKM...</p>
+          <a href="#" class="n-read">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="n-thumb nb6">
+          <i class="fas fa-graduation-cap"></i>
+          <span class="n-cat">Wisuda</span>
+          <div class="n-date"><i class="far fa-calendar-alt"></i> 9 Sep 2024</div>
+        </div>
+        <div class="n-body">
+          <div class="n-meta"><span><i class="fas fa-user"></i> Admin RPL</span><span><i class="fas fa-folder"></i> Kegiatan</span></div>
+          <h4>Wisuda Gelombang III 2024 – Selamat kepada Para Lulusan S1 RPL Telkom University!</h4>
+          <p>Sebanyak 210 mahasiswa S1 RPL resmi diwisuda dan siap memasuki dunia kerja sebagai software engineer profesional...</p>
+          <a href="#" class="n-read">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══ -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <h2>Siap Bergabung Bersama Kami?</h2>
+    <p>Daftar sekarang dan jadilah bagian dari keluarga besar S1 Rekayasa Perangkat Lunak Telkom University. Wujudkan karir software engineer impianmu!</p>
+    <a href="https://smb.telkomuniversity.ac.id/" target="_blank" class="btn-cta">
+      <i class="fas fa-paper-plane"></i> Daftar Sekarang
+    </a>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="f-about">
+        <div class="f-logo-wrap">
+          <img src="https://bse.telkomuniversity.ac.id/wp-content/uploads/2021/04/s1_se-removebg-preview-e1628068450389.png"
+               alt="Logo S1 RPL Tel-U" onerror="this.style.display='none'">
+        </div>
+        <p>Program Studi S1 Rekayasa Perangkat Lunak Telkom University menghasilkan lulusan kompeten dan berdaya saing global dalam bidang pengembangan perangkat lunak.</p>
+        <div class="f-socials">
+          <a href="https://www.instagram.com/s1rpltelu/" target="_blank" class="f-soc" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@S1RPLTelu" target="_blank" class="f-soc" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="f-soc" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="f-soc" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="f-soc" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="f-soc" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h5>Menu</h5>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Profil Prodi</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Visi &amp; Misi</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Akreditasi</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Dosen</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Prestasi</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h5>Akademik</h5>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Kurikulum</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Kalender Akademik</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Kerja Praktik</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Tugas Akhir</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> MBKM</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Penelitian</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Jurnal</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Pengabdian Masyarakat</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h5>Kontak</h5>
+        <div class="f-contact">
+          <div class="f-ci">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Gedung Bangkit, Jl. Telekomunikasi No.1, Terusan Buahbatu, Bandung 40257, Jawa Barat – Indonesia</span>
+          </div>
+          <div class="f-ci">
+            <i class="fas fa-phone-alt"></i>
+            <span>(022) 7566 456</span>
+          </div>
+          <div class="f-ci">
+            <i class="fas fa-envelope"></i>
+            <span>rpl@telkomuniversity.ac.id</span>
+          </div>
+          <div class="f-ci">
+            <i class="fas fa-globe"></i>
+            <span>bse.telkomuniversity.ac.id</span>
+          </div>
+          <div class="f-ci">
+            <i class="fab fa-whatsapp"></i>
+            <span>+62 811-2345-6789 (WhatsApp)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span>© 2025 Program Studi S1 Rekayasa Perangkat Lunak – Telkom University. All Rights Reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Sitemap</a>
+        <a href="#">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── SLIDER ──
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.sl-dot');
+let timer;
+
+function showSlide(n) {
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('active');
+  cur = (n + slides.length) % slides.length;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('active');
+}
+function cSlide(d) { showSlide(cur + d); reset(); }
+function gSlide(n) { showSlide(n); reset(); }
+function reset() {
+  clearInterval(timer);
+  timer = setInterval(() => cSlide(1), 5500);
+}
+timer = setInterval(() => cSlide(1), 5500);
+
+// ── MOBILE NAV ──
+function toggleMob() {
+  document.getElementById('mobNav').classList.toggle('open');
+}
+
+// ── SCROLL ANIMATIONS ──
+const els = document.querySelectorAll('.feat-card, .news-card, .vm-card, .st-box, .akred-item, .about-grid > *');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+els.forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(22px)';
+  el.style.transition = 'opacity .55s ease, transform .55s ease';
+  obs.observe(el);
+});
+
+// ── STICKY SHADOW ──
+window.addEventListener('scroll', () => {
+  document.getElementById('main-header').style.boxShadow =
+    window.scrollY > 10 ? '0 4px 18px rgba(0,0,0,0.14)' : '0 2px 8px rgba(0,0,0,0.12)';
+});
+</script>
+</body>
+</html>
